@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Vue-Microfrontends</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="importmap-type" content="systemjs-importmap">
+    <!-- 配置文件注意写成绝对路径：/开头，否则访问子项目的时候重定向的index.html，相对目录会出错 -->
+   <script type="systemjs-importmap" src="importmap.json"></script>
+
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/single-spa/4.3.7/system/single-spa.min.js" as="script" crossorigin="anonymous" />
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js" as="script" crossorigin="anonymous" />
+    
+    
+    <!-- systemjs的包 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.1.1/system.min.js"></script>
+    <!-- 用于解析子包的解析 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.1.1/extras/amd.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.1.1/extras/named-exports.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.1.1/extras/named-register.min.js"></script> -->
+    
+    <!-- 解析包的default -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.1.1/extras/use-default.min.js"></script>
+    <!-- systemjs的包 -->
+
+    <style rel="stylesheet">
+      .single-spa-wrap {
+        position: absolute;
+        left: 214px;
+        top: 126px;
+        right: 14px;
+        bottom: 14px;
+      }
+  
+      .side-bar-collapsed .single-spa-wrap {
+        left: 96px;
+      }
+  
+      .single-spa-wrap.application-mounted {
+        z-index: 0;
+      }
+  
+      .single-spa-application {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        opacity: 0;
+        transform: translateX(20px);
+        overflow: auto;
+        transition: opacity .3s ease-out, transform .3s ease-out;
+      }
+  
+      .single-spa-application.application-mounting {
+        position: static;
+        transform: translateX(0);
+        opacity: 1;
+      }
+ 
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+  </body>
+</html>
