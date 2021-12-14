@@ -1,15 +1,11 @@
 <template>
-  <section class="app-main">
-    <transition name="fade-transform" mode="out-in">
-      <keep-alive :include="cachedViews">
-        <router-view :key="key" />
-
-        <!-- <router-link to="/app1">账号中台</router-link> | -->
-        <!-- <router-link to="/app2">商品中台</router-link>  -->
-
-      </keep-alive>
-    </transition>
-  </section>
+    <section class="app-main">
+      <transition name="fade-transform" mode="out-in">
+        <keep-alive :include="cachedViews">
+          <router-view :key="key" />
+        </keep-alive>
+      </transition>
+    </section>
 </template>
 
 <script>
@@ -29,7 +25,7 @@ export default {
 <style lang="scss" scoped>
 .app-main {
   /* 50= navbar  50  */
-  min-height: calc(100vh - 50px);
+  // min-height: calc(100vh - 50px);
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -42,7 +38,7 @@ export default {
 .hasTagsView {
   .app-main {
     /* 84 = navbar + tags-view = 50 + 34 */
-    min-height: calc(100vh - 84px);
+    // min-height: calc(100vh - 84px);
   }
 
   .fixed-header+.app-main {

@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="text">
-      teesss
+      home
     </div>
     <router-link to="/app2/about">App2's about page</router-link>
   </div>
