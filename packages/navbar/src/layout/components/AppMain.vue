@@ -2,6 +2,9 @@
     <section class="app-main">
       <transition name="fade-transform" mode="out-in">
         <keep-alive :include="cachedViews">
+          <div>
+            appmain: {{states}}
+          </div>
           <router-view :key="key" />
         </keep-alive>
       </transition>
@@ -9,8 +12,19 @@
 </template>
 
 <script>
+import {states} from '@/eventListener'
 export default {
   name: 'AppMain',
+  data (){
+    return {
+      states: 0
+    }
+  },
+  mounted(){
+    console.log('laoyy', states)
+    console.log('window---', window.vm)
+    this.states = states
+  },
   computed: {
     cachedViews() {
       return this.$store.state.tagsView.cachedViews

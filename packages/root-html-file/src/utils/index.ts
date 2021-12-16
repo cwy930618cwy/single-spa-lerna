@@ -47,24 +47,12 @@ export function pathPrefix (app: AppConfig) {
  */
 export async function registerApp (spa: any, app: AppConfig) {
   const activityFunc = app.hash ? hashPrefix(app) : pathPrefix(app)
-  let store = null
-
-  if (app.store) {
-    try {
-      store = await System.import(app.store)
-    } catch (e) {
-      throw new Error(`应用${app.name}的仓库：${app.store}加载失败`)
-    }
-  }
 
   console.log('app=-----', app)
 
   spa.registerApplication(
     app.name,
     () => System.import(app.main),
-    app.base ? (() => true) : activityFunc,
-    {
-      store
-    }
+    app.base ? (() => true) : activityFunc
   )
 }

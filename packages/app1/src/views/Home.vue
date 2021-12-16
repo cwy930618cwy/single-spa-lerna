@@ -3,7 +3,9 @@
     <div class="text">
       home
     </div>
-    <router-link to="/app2/about">App2's about page</router-link>
+      <el-button icon="el-icon-question" type="primary" >
+      Show Guide
+    </el-button>
   </div>
 </template>
 

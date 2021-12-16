@@ -24,20 +24,11 @@ const vueLifecycles = singleSpaVue({
   appOptions: {
     // el: '#wrap', // 没有挂载点默认挂载到body下
     render: (h) => h(App),
-    router,
-    store: window.rootStore,
+    router
   },
 });
 
 export const bootstrap = [
-  () => {
-    return new Promise(async (resolve, reject) => {
-      // 注册当前应用的store
-      console.log(window.rootStore)
-      window.rootStore.registerModule(VUE_APP_NAME, store)
-      resolve()
-    })
-  },
   vueLifecycles.bootstrap
 ];
 export const mount = vueLifecycles.mount;

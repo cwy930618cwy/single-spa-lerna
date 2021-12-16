@@ -19,7 +19,7 @@ async function bootstrap () {
   // @ts-ignore
   Vue.prototype.$eventBus = new Vue()
   // @ts-ignore
-  window.rootStore = new Vuex.Store() // 全局注册唯一的vuex, 供子应用的共享
+  window.vm = Vue.prototype.$eventBus
 
   try {
     // 读取应用配置并注册应用

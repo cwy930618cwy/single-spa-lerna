@@ -3,7 +3,6 @@
     账号中台正在工作
     <div>
       账号中台 年龄
-      {{monitor}}
     </div>
     <div>
       点击按钮 总部数据+1
@@ -21,14 +20,9 @@
 export default {
   methods: {
     addCount(){
-      console.log('增加cout数量---', this)
-      this.$store.commit('incrementCount')
+      console.log('增加cout数量---', window.vm)
+      window.vm.$emit('addName', 'ls')
     },
-  },
-   computed: {
-    monitor () {
-      return this.$store.state.app1.age
-    }
   }
 }
 

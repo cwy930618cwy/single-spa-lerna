@@ -22,6 +22,8 @@ import './utils/error-log' // error log
 
 import * as filters from './filters' // global filters
 
+import {startListen} from './eventListener';
+
 Vue.config.productionTip = false
 
 /**
@@ -53,19 +55,14 @@ const vueLifecycles = singleSpaVue({
     el: '#root', // 没有挂载点默认挂载到body下
     render: (h) => h(App),
     router,
-    store: store
-  }
+    store: store,
+    beforeCreate() {
+      startListen()
+    }
+  },
 })
 
 export const bootstrap = [
-  // () => {
-  //   return new Promise((resolve) => {
-  //     // 注册当前应用的store
-  //     console.log(window.rootStore)
-  //     window.rootStore.registerModule(VUE_APP_NAME, store)
-  //     resolve()
-  //   })
-  // },
   vueLifecycles.bootstrap
 ]
 export const mount = vueLifecycles.mount
