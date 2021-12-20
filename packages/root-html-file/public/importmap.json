@@ -1,9 +1,9 @@
 {
   "imports": {
-    "navbar": "http://localhost:8888/js/app.js",
+    "mainAdmin": "http://localhost:8888/js/app.js",
     "admin": "http://localhost:9527/js/app.js",
-    "app1": "http://localhost:8081/js/app.js",
-    "app2": "http://localhost:8082/js/app.js",
+    "userAdmin": "http://localhost:8081/js/app.js",
+    "shopAdmin": "http://localhost:8082/js/app.js",
     "single-spa": "https://cdnjs.cloudflare.com/ajax/libs/single-spa/4.3.7/system/single-spa.min.js",
     "vue": "https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js",
     "vue-router": "https://cdn.jsdelivr.net/npm/vue-router@3.0.7/dist/vue-router.min.js",

@@ -1,7 +1,7 @@
 {
   "apps": [
     {
-      "name": "navbar",
+      "name": "mainAdmin",
       "main": "http://localhost:8888/js/app.js",
       "path": "/",
       "commonsChunks": [],
@@ -9,17 +9,17 @@
       "hash": true
     },
     {
-      "name": "app1",
+      "name": "userAdmin",
       "main": "http://localhost:8081/js/app.js",
-      "path": "/app1",
+      "path": "/userAdmin",
       "commonsChunks": [],
       "base": false,
       "hash": true
     },
     {
-      "name": "app2",
+      "name": "shopAdmin",
       "main": "http://localhost:8082/js/app.js",
-      "path": "/app2",
+      "path": "/shopAdmin",
       "commonsChunks": [],
       "base": false,
       "hash": true

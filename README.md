@@ -88,7 +88,7 @@ yarn config set workspaces-experimental true
 cd packages
 
 # 创建应用
-vue create app1
+vue create userAdmin
 
 // 项目目录结构
 ├── public
@@ -134,7 +134,7 @@ export const unmount = vueLifecycles.unmount;
 
 ```shell
 # 应用名称
-VUE_APP_NAME=app1
+VUE_APP_NAME=userAdmin
 # 应用根路径，默认值为: '/'，如果要发布到子目录，此值必须指定
 VUE_APP_BASE_URL=/
 # 端口，子项目开发最好设置固定端口， 避免频繁修改配置文件，设置一个固定的特殊端口，尽量避免端口冲突。
@@ -223,9 +223,9 @@ npm init -y
 ```json
 {
   "imports": {
-    "navbar": "http://localhost:8888/js/app.js",
-    "app1": "http://localhost:8081/js/app.js",
-    "app2": "http://localhost:8082/js/app.js",
+    "mainAdmin": "http://localhost:8888/js/app.js",
+    "userAdmin": "http://localhost:8081/js/app.js",
+    "shopAdmin": "http://localhost:8082/js/app.js",
     "single-spa": "https://cdnjs.cloudflare.com/ajax/libs/single-spa/4.3.7/system/single-spa.min.js",
     "vue": "https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js",
     "vue-router": "https://cdn.jsdelivr.net/npm/vue-router@3.0.7/dist/vue-router.min.js",
@@ -239,20 +239,20 @@ npm init -y
 ```js
 // 注册子应用
 singleSpa.registerApplication(
-  'app1', // systemjs-webpack-interop, 去匹配子应用的名称
-  () => System.import('app1'), // 资源路径
-  location => location.hash.startsWith('/app1') // 资源激活的
+  'userAdmin', // systemjs-webpack-interop, 去匹配子应用的名称
+  () => System.import('userAdmin'), // 资源路径
+  location => location.hash.startsWith('/userAdmin') // 资源激活的
 )
 
 singleSpa.registerApplication(
-  'app2', // systemjs-webpack-interop, 去匹配子应用的名称
-  () => System.import('app2'), // 资源路径
-  location => location.hash.startsWith('#/app2') // 资源激活的
+  'shopAdmin', // systemjs-webpack-interop, 去匹配子应用的名称
+  () => System.import('shopAdmin'), // 资源路径
+  location => location.hash.startsWith('#/shopAdmin') // 资源激活的
 )
 singleSpa.registerApplication(
-  'app2', // systemjs-webpack-interop, 去匹配子应用的名称
-  () => System.import('app2'), // 资源路径
-  location => location.hash.startsWith('#/app2') // 资源激活的
+  'shopAdmin', // systemjs-webpack-interop, 去匹配子应用的名称
+  () => System.import('shopAdmin'), // 资源路径
+  location => location.hash.startsWith('#/shopAdmin') // 资源激活的
 )
 // 开始singleSpa
 singleSpa.start();
@@ -273,14 +273,14 @@ singleSpa.start();
 ├── node_modules
 ├── package.json
 ├── packages    # 应用包目录
-│   ├── app1    # 应用1
-│   ├── app2    # 应用2
-│   ├── navbar   # 主应用
+│   ├── userAdmin    # 应用1
+│   ├── shopAdmin    # 应用2
+│   ├── mainAdmin   # 主应用
 │   └── root-html-file  # 入口
 └── yarn.lock
 ```
 
-如上图所示，所有的应用都存放在 `packages` 目录中。其中 `root-html-file` 为入口项目，`navbar` 为常驻的主应用，这两者在开发过程中必须启动相应的服务。其他为待开发的子应用。
+如上图所示，所有的应用都存放在 `packages` 目录中。其中 `root-html-file` 为入口项目，`mainAdmin` 为常驻的主应用，这两者在开发过程中必须启动相应的服务。其他为待开发的子应用。
 
 
 ## 项目的优化
@@ -290,23 +290,23 @@ singleSpa.start();
 {
   "apps": [
     {
-      "name": "navbar", // 应用名称
+      "name": "mainAdmin", // 应用名称
       "main": "http://localhost:8888/js/app.js", // 应用的入口
       "path": "/", // 是否为常驻应用
       "base": true, // 是否使用history模式
       "hash": true // 是否使用hash模式
     },
     {
-      "name": "app1",
+      "name": "userAdmin",
       "main": "http://localhost:8081/js/app.js",
-      "path": "/app1",
+      "path": "/userAdmin",
       "base": false,
       "hash": true
     },
     {
-      "name": "app2",
+      "name": "shopAdmin",
       "main": "http://localhost:8082/js/app.js",
-      "path": "/app2",
+      "path": "/shopAdmin",
       "base": false,
       "hash": true
     }
@@ -429,7 +429,7 @@ module.exports = {
       namespace(css) {
         // element-ui的样式不需要添加命名空间
         if (css.includes('element-variables.scss')) return '';
-        return '.app1' // 返回要添加的类名
+        return '.userAdmin' // 返回要添加的类名
       }
     },
   }
@@ -568,9 +568,9 @@ lerna run build
 ```
 .
 ├── dist
-│   ├── app1/
-│   ├── app2/
-    ├── navbar/
+│   ├── userAdmin/
+│   ├── shopAdmin/
+    ├── mainAdmin/
 │   ├── app.config.json
 │   ├── importmap.json
 │   ├── main.js
@@ -596,8 +596,8 @@ lerna bootstrap
 # npm i axios 所有包都添加axios
 lerna add axios 
 
-# cd app1 & npm i axios
-lerna add axios --scope=app1
+# cd userAdmin & npm i axios
+lerna add axios --scope=userAdmin
 
 ```
 
