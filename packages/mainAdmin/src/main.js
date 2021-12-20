@@ -20,6 +20,8 @@ import '@/styles/index.scss' // global css
 import './icons' // icon
 import './permission' // permission control
 
+import "./plugins";
+
 import { startListen } from './eventListener'
 
 Vue.config.productionTip = false
