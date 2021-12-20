@@ -5,8 +5,11 @@ const StatsPlugin = require('stats-webpack-plugin')
 
 const isProduction = process.env.NODE_ENV === 'production'
 const appName = process.env.VUE_APP_NAME
+
 const port = process.env.port
 // const basePath = argv['base-path'] || '/'
+
+console.log('port----', port)
 
 const baseUrl = process.env.VUE_APP_BASE_URL
 
